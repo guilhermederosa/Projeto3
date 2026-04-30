@@ -43,3 +43,18 @@ header nav ul li a{
 header nav ul li a:hover{
     color:var(--color4);
 }
+.cor{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:var(--colorLinear);
+}
+#texto{
+    font-size:3rem;
+    text-align:center;
+    margin-top:100px;
+    text-transform:uppercase;
+    background:var(--colorLinear);
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
