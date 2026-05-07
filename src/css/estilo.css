@@ -4,16 +4,17 @@
     --color3:#555;
     --color4:#3ae4b1;
     --colorLinear:linear-gradient(purple,aqua);
-    --fontFamily:"Cascadia Code", sans-serif;
+    --fontFamily:"Cascadia Code",sans-serif;
 }
+
 *{
     margin:0;
     padding:0;
-    box-sizing:border-box
+    box-sizing:border-box;
 }
 body{
     background:var(--color1);
-    fontFamily:"Cascadia Code",sans-serif;
+    font-family:var(--fontFamily);
 }
 
 #inicio{
@@ -28,46 +29,85 @@ body{
     justify-content:center;
     align-items:center;
     opacity:1;
-    transition:opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 #imgHero{
     width:400px;
     height:400px;
     border-radius:50%;
+    animation: rodar 1s ease-in-out;
 }
+@keyframes rodar{
+    0% {
+        transform:rotate(0deg);
+    }
+   50%{
+        transform:rotate(360deg);
+       
+    }
+    80%{
+         transform:translatex(100px);
+    }
+    100{
+        transform:translatex(-100px);
+    }
+}
+
 #titulo{
-    font-size:3rem;
+    font-size:3.5rem;
     text-align:center;
     margin-top:100px;
     text-transform:uppercase;
     background:var(--colorLinear);
     -webkit-text-fill-color:transparent;
     background-clip:text;
-    animation:efeito 1s ease-in-out;
+    animation: efeito 1s ease-in-out;
 }
+
 @keyframes efeito{
     from{
         opacity:0;
     }
     to{
-        opacity:1;
+        opacity:1
     }
 }
+
 #frase{
-    font-size:1.3rem;
+    font-size:1.5rem;
     color:var(--color1);
     opacity:0;
     animation:efeito2 1s ease-in-out;
 }
+
 @keyframes efeito2{
     from{
         opacity:0;
         transform:scale(1.4);
     }
     to{
-        opacity:1;
+        opacity:1
     }
 }
+
+/*MENU HAMBURGUER*/
+
+.menu-hamburguer{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    width:30px;
+    height:25px;
+    cursor:pointer;
+    z-index:1000;
+}
+.menu-hamburguer span{
+    width:100%;
+    height:3px;
+    background:var(--color4);
+    border-radius:10px;
+}
+
 header{
     background:var(--color3);
     color:var(--color2);
@@ -78,16 +118,19 @@ header{
     box-shadow: 0 5px 5px var(--color4);
     border-radius:50px;
 }
+
 header #logo{
     width:70px;
     height:70px;
     border-radius:50px;
 }
+
 header nav ul{
     display:flex;
     gap:20px;
     list-style:none;
 }
+
 header nav ul li a{
     text-decoration:none;
     color:var(--color1);
@@ -96,6 +139,7 @@ header nav ul li a{
 header nav ul li a:hover{
     color:var(--color4);
 }
+
 .cor{
     width:30px;
     height:30px;
@@ -110,4 +154,44 @@ header nav ul li a:hover{
     background:var(--colorLinear);
     -webkit-text-fill-color:transparent;
     background-clip:text;
+}
+
+/* RESPONSIVIDADE MENU HAMBURGUER */
+/*BREAKPOINT*/
+
+@media(max-width: 768px){
+    header{
+        position:relative;
+    }
+    .menu-hamburguer{
+        display:flex;
+        position:relative;
+        z-index:1002;
+    }
+    nav{
+        display:none !important;
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:var(--color2);
+        flex-direction:column;
+        padding: 20px;
+        z-index:1001;
+        border-radius:30px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    nav.active{
+        display:flex !important;
+    }
+    nav ul{
+        flex-direction:column;
+        align-items:center;
+        gap:20px;
+    }
+    /*efeito para transformar o menu em X*/
+    .open span:nth-child(1){transform:rotate(45deg)translate(5px,5px);}
+    .open span:nth-child(2){opacity:0;}
+    .open span:nth-child(3){transform:rotate(-45deg)translate(7px,-7px);}
+
 }
